@@ -1,20 +1,28 @@
 import React from 'react';
-import { ReactComponent as Logo } from './logo.svg';
+import { ReactComponent as Close } from './close.svg';
 
 import styles from './search.module.scss';
 
 function Search({ searchValue, setSearchValue }) {
+  console.log(searchValue, 'search value');
   return (
     <div className={styles.root}>
       <input
-        value={searchValue }
+        value={searchValue}
         onChange={(event) => {
           setSearchValue(event.target.value);
         }}
         className={styles.root}
         placeholder="Поиск пиццы"
       />
-       {searchValue && (<Logo onClick={()=>{setSearchValue('')}} className={styles.icon}/>)}
+      {searchValue && (
+        <Close
+          onClick={() => {
+            setSearchValue('');
+          }}
+          className={styles.icon}
+        />
+      )}
     </div>
   );
 }

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Search from './Search/';
 
 function Header({searchValue, setSearchValue}) {
-  // console.log(searchValue, setSearchValue);
+  console.log(searchValue, 'header search value');
   return (
     <div className="header">
       <div className="container">

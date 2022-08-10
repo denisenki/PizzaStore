@@ -7,6 +7,7 @@ import Sceleton from '../PizzaBlock/Sceleton';
 import Search from '../Search';
 
 const Home = ({ searchValue, setSearchValue }) => {
+  console.log(searchValue, 'home search');
   const [ithems, setItems] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
 
@@ -15,9 +16,7 @@ const Home = ({ searchValue, setSearchValue }) => {
 
   React.useEffect(() => {
     setIsLoading(true);
-    fetch(`https://626d16545267c14d5677d9c2.mockapi.io/items?
-    ${categoryId > 0 ? `category=${categoryId}`: ``}sortBy=${sort.sortType}&order=desc`
-    )
+    fetch(`https://626d16545267c14d5677d9c2.mockapi.io/items?${categoryId > 0 ? `category=${categoryId}` : ``}&sortBy=${sort.sortType}&order=asc`)
       .then((res) => {
         return res.json();
       })
@@ -27,15 +26,18 @@ const Home = ({ searchValue, setSearchValue }) => {
       });
     // Подняться вверх при первом рендере
     window.scrollTo(0, 0);
-  }, [categoryId,sort]);
+  }, [categoryId, sort]);
 
   const skeletons = [...new Array(6)].map((_, index) => <Sceleton key={index} />);
+  // const pizazz = ithems.map((obj) => <PizzaBlock key={obj.id} {...obj} />);
+
   const pizazz = ithems
-    // .filter((obj)=>{
-    //   if(obj.title.toLowerCase().includes(searchValue) === searchValue) {
-    //     return true
-    //   } return false
-    // })
+    .filter((obj) => {
+      if (obj.title.toLowerCase().includes(searchValue.toLowerCase())) {
+        return true;
+      }
+      return false;
+    })
     .map((obj) => <PizzaBlock key={obj.id} {...obj} />);
 
   return (

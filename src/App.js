@@ -15,35 +15,23 @@ import {
 
 
 function App() {
-  // const [items, setItems] = React.useState([]);
+  const [searchValue, setSearchValue] = React.useState('пеппер');
+  console.log(searchValue, "input");
 
-  // React.useEffect(() => {
-  //   fetch('https://62efcea98d7bc7c2eb805fe1.mockapi.io/items')
-  //     .then((res) => {
-  //       return res.json()
-  //     })
-  //     .then((res) => {
-  //       setItems(res)
-  //     })
-  //   }, [])
-
-    const [searchValue, setSearchValue] = React.useState('');
-    // console.log(searchValue, "input");
-
-    return (
-      <div className="App">
-        <div className="wrapper">
-          <Header searchValue={searchValue} setSearchValue={setSearchValue} />
-          <div className="content">
-            <Routes>
-              <Route path='/' element={<Home />}></Route>
-              <Route path='/cart' element={<Cart />}></Route>
-              <Route path='*' element={<NotFound />}></Route>
-            </Routes>
-          </div>
+  return (
+    <div className="App">
+      <div className="wrapper">
+        <Header searchValue={searchValue} setSearchValue={setSearchValue} />
+        <div className="content">
+          <Routes>
+            <Route path='/' element={<Home searchValue={searchValue} setSearchValue={setSearchValue} />}></Route>
+            <Route path='/cart' element={<Cart />}></Route>
+            <Route path='*' element={<NotFound />}></Route>
+          </Routes>
         </div>
       </div>
-    );
+    </div>
+  );
 }
 
 export default App;
