@@ -1,0 +1,59 @@
+.root {
+    display: inline-flex;
+}
+
+.root ul {
+    display: inline-flex;
+}
+
+.root li {
+    // color: #ffffff;
+    // background-color:#fe5f1e;
+    color: #fe5f1e;
+    border: 1px #fe5f1e solid;
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    padding-top:4px;
+    cursor: pointer;
+}
+
+// .root li .selected {
+//     color: #ffffff;
+//     margin-right: 10px;
+//     width: 30px;
+//     height: 30px;
+//     border-radius: 50px;
+//     background-color:#fe5f1e;
+
+// }
+
+.root li a {
+    // color: #fe5f1e;
+    color: #fe5f1e;
+    // background-color:#fe5f1e;
+    // // color: #fe5f1e;
+    // border: 1px #fe5f1e solid;
+    // margin-right: 10px;
+    // width: 30px;
+    // height: 30px;
+    // border-radius: 50px;
+    // padding-top:4px;
+    // cursor: pointer;
+}
+:global li a .selected {
+    color: #ffffff;
+    background-color:#fe5f1e;
+    // color: #fe5f1e;
+    border: 1px #fe5f1e solid;
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    padding-top:4px;
+}
+
+.root li a:hover {
+
+}

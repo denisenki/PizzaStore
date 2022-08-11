@@ -15,7 +15,7 @@ import {
 
 
 function App() {
-  const [searchValue, setSearchValue] = React.useState('пеппер');
+  const [searchValue, setSearchValue] = React.useState('');
   console.log(searchValue, "input");
 
   return (
