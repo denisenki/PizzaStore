@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import './scss/app.scss';
 import Header from './components/Header';
@@ -8,7 +7,6 @@ import NotFound from './components/Pages/NotFound';
 import Cart from './components/Pages/Cart';
 
 import {
-  BrowserRouter,
   Routes,
   Route,
 } from "react-router-dom";
@@ -16,7 +14,7 @@ import {
 
 function App() {
   const [searchValue, setSearchValue] = React.useState('');
-  console.log(searchValue, "input");
+  // console.log(searchValue, "input");
 
   return (
     <div className="App">

@@ -1,23 +1,42 @@
 import React from 'react';
 
+export const sortIthem = [
+  { name: 'популярности', sortType: 'rating' },
+  { name: 'цене', sortType: 'price' },
+  { name: 'алфавиту', sortType: 'title' },
+];
+
 function Sort({ sort, OnChangeSort }) {
+//  ссылка на окно с сортировкой
+  const SortRef = React.useRef();
+
+  // Стейт для окна с сортировкой
   const [isOpen, setIsOpen] = React.useState(0);
 
-  const sortIthem = [
-    { name: 'популярности', sortType: 'rating' },
-    { name: 'цене', sortType: 'price' },
-    { name: 'алфавиту', sortType: 'title' },
-  ];
+  // Проверка: если клик был не на окно с сортировкой, то закрываем окно
+  React.useEffect(() => {
+    const HandleClickOutside = (event) => {
+        if (!event.path.includes(SortRef.current)) {
+          setIsOpen(false);
+        }
+    }
+
+    document.body.addEventListener('click',HandleClickOutside)
+
+    return ()=>{
+      document.body.removeEventListener('click',HandleClickOutside)
+    }
+  }, []);
 
   const OnClickSort = (index) => {
-    console.log(index);
+    // console.log(index);
     OnChangeSort(index);
     // Закрываем окно
     setIsOpen(!isOpen);
   };
 
   return (
-    <div className="sort">
+    <div ref={SortRef} className="sort">
       <div className="sort__label">
         <svg
           width="10"
