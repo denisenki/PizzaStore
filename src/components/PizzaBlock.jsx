@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addItem } from '../features/Cart/CartSlice';
+import { Link } from 'react-router-dom';
 
 function PizzaBlock({ id, title, price, imageUrl, sizes, types }) {
   const dispatch = useDispatch();
@@ -18,13 +19,21 @@ function PizzaBlock({ id, title, price, imageUrl, sizes, types }) {
 
   const typesArr = ['тонкое', 'традиционное'];
 
-  const [count, setCount] = React.useState(0);
+  // const [count, setCount] = React.useState(0);
+  const countItem = useSelector((state) => state.cart.items.find((obj) => obj.id === id));
+  const addCount = countItem ? countItem.count : 0;
   const [activeTypes, setActiveTypes] = React.useState(0);
   const [activeSize, setActiveSize] = React.useState(0);
+
+  const link = `/pizza/${id}`;
+  // console.log(link);
+
   return (
     <div className="pizza-block">
       <img className="pizza-block__image" src={imageUrl} alt="Pizza" />
-      <h4 className="pizza-block__title">{title}</h4>
+      <Link to={link}>
+        <h4 className="pizza-block__title">{title}</h4>
+      </Link>
       <div className="pizza-block__selector">
         <ul>
           {types.map((types, i) => (
@@ -56,7 +65,7 @@ function PizzaBlock({ id, title, price, imageUrl, sizes, types }) {
             />
           </svg>
           <span>Добавить</span>
-          <i>{count}</i>
+          {addCount > 0 && <i>{addCount}</i>}
         </button>
       </div>
     </div>
