@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 function PizzaBlock({ id, title, price, imageUrl, sizes, types }) {
   const dispatch = useDispatch();
+
   const AddItems = () => {
     const item = {
       id,
@@ -13,6 +14,7 @@ function PizzaBlock({ id, title, price, imageUrl, sizes, types }) {
       imageUrl,
       sizes: activeSize,
       types: activeTypes,
+      count:1
     };
     dispatch(addItem(item));
   };
