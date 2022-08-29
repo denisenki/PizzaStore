@@ -14,14 +14,15 @@ function PizzaBlock({ id, title, price, imageUrl, sizes, types }) {
       imageUrl,
       sizes: activeSize,
       types: activeTypes,
-      count:1
+      count: 1,
     };
+    console.log('Товар в корзину', item);
     dispatch(addItem(item));
   };
 
   const typesArr = ['тонкое', 'традиционное'];
 
-  // const [count, setCount] = React.useState(0);
+  const [count, setCount] = React.useState(0);
   const countItem = useSelector((state) => state.cart.items.find((obj) => obj.id === id));
   const addCount = countItem ? countItem.count : 0;
   const [activeTypes, setActiveTypes] = React.useState(0);
@@ -37,20 +38,20 @@ function PizzaBlock({ id, title, price, imageUrl, sizes, types }) {
         <h4 className="pizza-block__title">{title}</h4>
       </Link>
       <div className="pizza-block__selector">
-        <ul>
+        {/* <ul>
           {types.map((types, i) => (
             <li onClick={() => setActiveTypes(types)} className={activeTypes === i ? 'active' : ''}>
               {typesArr[types]}
             </li>
           ))}
-        </ul>
-        <ul>
+        </ul> */}
+        {/* <ul>
           {sizes.map((size, i) => (
             <li onClick={() => setActiveSize(i)} className={activeSize === i ? 'active' : ''}>
               {size}
             </li>
           ))}
-        </ul>
+        </ul> */}
       </div>
       <div className="pizza-block__bottom">
         <div className="pizza-block__price">{price}</div>

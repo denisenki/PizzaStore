@@ -32,7 +32,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Home searchValue={searchValue} setSearchValue={setSearchValue} />}></Route>
             <Route path='/cart' element={<Cart />}></Route>
-            <Route path='/pizza/:id' element={<FullPiza par={par} />}></Route>
+            <Route path='/pizza/:id' element={<FullPiza />}></Route>
             <Route path='*' element={<NotFound />}></Route>
           </Routes>
         </div>

@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    categoryId: 0,
+    categoryId: 1,
     currentPage: 1
 }
 
@@ -20,6 +20,7 @@ export const CategorySlice = createSlice({
     }
 })
 
+export const SelectCategory = (state) => state.category.categoryId;
 // Action creators are generated for each case reducer function
 export const { setCategory, setFilters } = CategorySlice.actions
 
