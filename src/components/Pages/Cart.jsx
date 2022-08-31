@@ -2,10 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import CartItem from './CartItem';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 const Cart = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const items = useSelector((state) => state.cart.items);
   const { TotalCount, TotalPrice } = useSelector((state) => state.cart);
   console.log('TotalCount', TotalCount);
@@ -13,9 +13,9 @@ const Cart = () => {
   return (
     <>
       <h1>Корзина</h1>
-      <div class="cart">
-        <div class="cart__top">
-          <h2 class="content__title">
+      <div className="cart">
+        <div className="cart__top">
+          <h2 className="content__title">
             <svg
               width="18"
               height="18"
@@ -46,7 +46,7 @@ const Cart = () => {
             </svg>
             Корзина
           </h2>
-          <div class="cart__clear">
+          <div className="cart__clear">
             <svg
               width="20"
               height="20"
@@ -86,13 +86,13 @@ const Cart = () => {
             <span>Очистить корзину</span>
           </div>
         </div>
-        <div class="content__items">
+        <div className="content__items">
           {items.map((item, i) => (
             <CartItem key={i} {...item} />
           ))}
         </div>
-        <div class="cart__bottom">
-          <div class="cart__bottom-details">
+        <div className="cart__bottom">
+          <div className="cart__bottom-details">
             <span>
               {' '}
               Всего пицц: <b>{TotalCount}</b>{' '}
@@ -102,8 +102,8 @@ const Cart = () => {
               Сумма заказа: <b>{TotalPrice}</b>{' '}
             </span>
           </div>
-          <div class="cart__bottom-buttons">
-            <Link to="/" class="button button--outline button--add go-back-btn">
+          <div className="cart__bottom-buttons">
+            <Link to="/" className="button button--outline button--add go-back-btn">
               <svg
                 width="8"
                 height="14"
@@ -121,7 +121,7 @@ const Cart = () => {
 
               <span>Вернуться назад</span>
             </Link>
-            <div class="button pay-btn">
+            <div className="button pay-btn">
               <span>Оплатить сейчас</span>
             </div>
           </div>

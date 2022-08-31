@@ -1,18 +1,26 @@
 import React from 'react';
 
-const CartItem = ({ id, count, price, title, imageUrl }) => {
+type CartItemProps = {
+  id: string 
+  count: number 
+  price: number 
+  title: string 
+  imageUrl: string
+}
+
+const CartItem:React.FC<CartItemProps> = ({ id, count, price, title, imageUrl }) => {
   return (
     <>
-      <div class="cart__item">
-        <div class="cart__item-img">
-          <img class="pizza-block__image" src={imageUrl} alt="Pizza" />
+      <div className="cart__item">
+        <div className="cart__item-img">
+          <img className="pizza-block__image" src={imageUrl} alt="Pizza" />
         </div>
-        <div class="cart__item-info">
+        <div className="cart__item-info">
           <h3>{title}</h3>
           <p>тонкое тесто, 26 см.</p>
         </div>
-        <div class="cart__item-count">
-          <div class="button button--outline button--circle cart__item-count-minus">
+        <div className="cart__item-count">
+          <div className="button button--outline button--circle cart__item-count-minus">
             <svg
               width="10"
               height="10"
@@ -30,7 +38,7 @@ const CartItem = ({ id, count, price, title, imageUrl }) => {
             </svg>
           </div>
           <b>{count}</b>
-          <div class="button button--outline button--circle cart__item-count-plus">
+          <div className="button button--outline button--circle cart__item-count-plus">
             <svg
               width="10"
               height="10"
@@ -48,11 +56,11 @@ const CartItem = ({ id, count, price, title, imageUrl }) => {
             </svg>
           </div>
         </div>
-        <div class="cart__item-price">
+        <div className="cart__item-price">
           <b>{price * count} ₽</b>
         </div>
-        <div class="cart__item-remove">
-          <div class="button button--outline button--circle">
+        <div className="cart__item-remove">
+          <div className="button button--outline button--circle">
             <svg
               width="10"
               height="10"

@@ -4,23 +4,30 @@ import debounce from 'lodash.debounce';
 
 import styles from './search.module.scss';
 
+type SearchProps = {
+  searchValue: number
+  setSearchValue: any
+}
 
-function Search({ searchValue, setSearchValue }) {
+const Search:React.FC<SearchProps> = ({ searchValue, setSearchValue })=> {
   const [value, setValue]= React.useState('')
-  const inputRef = React.useRef();
+  const inputRef = React.useRef<HTMLInputElement>(null);
 
   const Debounce = debounce((event) => {
     setSearchValue(event.target.value);
   }, 1000);
 
-  const onchangeHandler = (event) => {
+  const onchangeHandler = (event:any) => {
     setValue(event.target.value)
     Debounce(event)
   };
 
   const OnclickSearch = () => {
     setSearchValue('');
-    inputRef.current.focus();
+    if(inputRef.current){
+      inputRef.current.focus();
+    }
+    // inputRef.current?.focus();
   };
   // console.log(searchValue, 'search value');
   return (

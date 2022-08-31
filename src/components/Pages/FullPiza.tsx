@@ -2,8 +2,12 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
-const FullPiza = () => {
-  const [value, setValue] = React.useState([]);
+const FullPiza:React.FC = () => {
+  const [value, setValue] = React.useState<{
+    imageUrl: string
+  }>();
+  console.log('value',value);
+  
   const { id } = useParams();
 
   React.useEffect(() => {
